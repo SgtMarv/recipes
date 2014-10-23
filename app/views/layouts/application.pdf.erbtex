@@ -1,0 +1,15 @@
+\documentclass[10pt,a4paper]{scrartcl}
+
+\usepackage[USenglish, ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{multicol}
+
+\setlength{\columnsep}{1cm}
+
+\begin{document}
+
+<%= yield %> 
+
+\end{document}

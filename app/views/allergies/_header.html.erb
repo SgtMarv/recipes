@@ -1,0 +1,11 @@
+<fieldset>
+    <legend> 
+        <%= @title %> 
+    </legend>
+
+    <%= link_to "New", new_allergy_path %>  |
+    <%= link_to "List", allergies_path %> 
+
+</fieldset>
+
+<%= render 'layouts/flash_view' %>

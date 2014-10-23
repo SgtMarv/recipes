@@ -1,0 +1,43 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        <%= @title %> 
+    </legend>
+
+    <h3> <%= @m.name %> </h3>
+        For <%= @m.people %> people. <br>
+
+    <p>
+        <table>
+            <tr>
+                <th> Factor </th>
+                <th> Recipe </th>
+            </tr>
+            <% @mrs.each do |mr| %> 
+                <tr>
+                    <td> <%= mr.factor %> </td>
+                    <td> <%= link_to "#{Recipe.find(mr.recipe).name}", Recipe.find(mr.recipe) %> </td>
+                </tr>
+            <% end %> 
+        </table>
+    </p>
+
+
+    <fieldset>
+        <legend>
+            Actions
+        </legend>
+
+        <%= link_to "Edit", edit_menu_path %> | 
+        <%= link_to "Add Recipe", add_recipe_url(:id => @m.id) %> |
+        <%= link_to "Shopping", shopping_list_url(:id => @m.id, :format => :pdf) %> |
+        <%= link_to "Recipes", recipe_list_url(:id => @m.id, :format => :pdf) %> 
+
+
+    </fieldset>
+
+    <p>
+        <%= button_to "Destroy", @m, :confirm => "Are you sure?", :method => :delete %> 
+
+</fieldset>

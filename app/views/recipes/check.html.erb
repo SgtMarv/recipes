@@ -1,0 +1,62 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        Check Recipe
+    </legend>
+    
+    <%= form_for @recipe do |r| %> 
+        <p>
+            <table>
+                <tr> 
+                    <td> Name </td>
+                    <td> <%= @recipe.name %> <td>
+                    <%= hidden_field_tag "name",  @recipe.name %> 
+                </tr>
+                <% @ings.each_with_index do |i,j| %> 
+                    <tr>
+
+                        <td> 
+                            <% unless i.class == Array %> 
+                                <%= i.name %> 
+                                <%= hidden_field_tag "ingredient[]", i.id %> 
+                            <% else %> 
+                               <%= select_tag "ingredient[]", options_from_collection_for_select(i, :id, :name), {:include_blank=>false} %>  
+                            <% end %> 
+                        </td>
+
+                        <td>
+                            <% unless @vs[j] == "" %> 
+                                <%= @vs[j] %> 
+                                <%= hidden_field_tag "amount[]", @vs[j] %> 
+                            <% else %> 
+                                <%= number_field_tag "amount[]", nil, :size => 2 %> 
+                            <% end %> 
+                        </td>
+
+                        <td> 
+                            <% unless @us[j].class == Array %>
+                                <%= @us[j].name %> 
+                                <%= hidden_field_tag "unit[]", @us[j].id %> 
+                            <% else %> 
+                                <%= select_tag "unit[]", options_from_collection_for_select(@us[j], :id, :name) %>     
+                            <% end %> 
+                        </td>
+
+                    </tr>
+
+                <% end %>   
+                <tr> 
+                    <td> Comment </td>
+                    <td> <%= @recipe.comment %> </td>
+                    <%= hidden_field_tag "comment", @recipe.comment %> 
+                </tr>
+            </table>
+        </p>
+    <p>
+        <%= r.submit "Create" %> 
+    </p>
+
+    <% end %> 
+
+</fieldset>

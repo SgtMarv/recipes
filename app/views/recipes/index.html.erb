@@ -1,0 +1,20 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend> 
+        <%= @title %> 
+    </legend>
+
+    <p>
+        <table>
+            <tr> 
+                <th> Recipe </th>
+            </tr>
+            <% @recipes.each do |r| %> 
+                <tr>
+                    <td> <%= link_to "#{r.name}", r %> </td>
+                </tr>
+            <% end %> 
+        </table>
+    </p>
+</fieldset>

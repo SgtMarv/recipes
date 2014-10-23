@@ -1,0 +1,29 @@
+<%= form_for @i do |i| %> 
+    <p> 
+        <table>
+            <tr> 
+                <td> Ingredient </td>
+                <td> <%= i.text_field :name, :value=>  @i.name%> </td>
+            </tr>
+            <tr> 
+                <td> Standard Unit </td>
+                <td> <%= i.select :favored_unit, options_from_collection_for_select(@units, :id, :name, @u.id) %> </td>
+            </tr>
+            <tr> 
+                <td> Category </td> 
+                <td> <%= i.select :category, options_from_collection_for_select(@cats, :id, :name, @c.id) %> </td>
+            </tr>
+            <tr> 
+                <td> Allergies </td>
+                <td> <%= select_tag "allergies[]", options_from_collection_for_select(@als, :id, :name, @als_sel.map(&:id)), :multiple => true  %> </td>
+            </tr>
+                
+
+        </table>
+    </p>
+
+    <p>
+        <%= button_to "#{@action}" %>
+    </p> 
+
+<% end %> 

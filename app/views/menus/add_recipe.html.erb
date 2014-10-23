@@ -1,0 +1,28 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        <%= @title %> 
+    </legend>
+
+    <%= form_tag insert_recipe_url(:id => @m.id) do %> 
+        <p>
+            <table>
+                <tr>
+                    <td> Recipe </td>
+                    <td> <%= select_tag "recipe", options_from_collection_for_select(@recipes, :id, :name), :include_blank => false %> </td>
+                </tr>
+                <tr> 
+                    <td> Factor</td>
+                    <td> <%= number_field_tag "factor", nil, :size => 4, :step => :any %> </td>
+                </tr>
+            </table>
+        </p>
+
+        <p>
+            <%= button_to "Add", insert_recipe_url(:id => @m.id) %> 
+        </p>
+
+    <% end %>
+
+</fieldset>

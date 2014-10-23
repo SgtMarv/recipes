@@ -1,0 +1,30 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend> 
+        <%= @title %> 
+    </legend>
+
+    <p> 
+        <table> 
+            <tr> 
+                <td> Name </td> 
+                <td> <%= @a.name %> 
+            </tr> 
+        </table>
+    </p>
+
+    <fieldset>
+        <legend> 
+            Actions
+        </legend>
+        
+        <%= link_to "Edit", edit_allergy_path %> 
+    
+    </fieldset>
+
+    <p>
+        <%= button_to "Destroy", @a, :confirm => "Are you sure?", :method => :delete %> 
+    </p>
+
+</fieldset>

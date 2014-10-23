@@ -1,0 +1,33 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        <%= @title %> 
+    </legend>
+
+    <%= form_tag check_ingredient_url(:id=>@r.id) do %> 
+        <p>
+            <table>
+                <tr>
+                    <th> Ingredient </th>
+                    <th> Amount </th>
+                    <th> Unit </th>
+                </tr>
+                        
+                <% 5.times do |i| %> 
+                    <tr>
+                        <td> <%= text_field_tag "ingredient[]", nil, :size => 9%> </td>
+                        <td> <%= number_field_tag "amount[]", nil, :size => 4 %> </td>
+                        <td> <%= text_field_tag "unit[]", nil, :size => 1 %> </td>
+                    </tr>
+                <% end %>
+            </table>
+        </p>
+
+    <p>
+        <%= button_to "Add", check_ingredient_url(:id => @r.id) %> 
+    </p>
+
+    <% end %> 
+
+</fieldset>

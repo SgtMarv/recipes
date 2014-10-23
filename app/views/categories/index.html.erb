@@ -1,0 +1,20 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend> 
+        <%= @title %> 
+    </legend>
+
+    <p>
+        <table>
+            <tr> 
+                <th> Category</th>
+            </tr>
+            <% @categories.each do |c| %> 
+                <tr>
+                    <td> <%= link_to "#{c.name}", c %> </td>
+                </tr>
+            <% end %> 
+        </table>
+    </p>
+</fieldset>

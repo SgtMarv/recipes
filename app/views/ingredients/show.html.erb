@@ -1,0 +1,61 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend> 
+        <%= @title %> 
+    </legend>
+
+    <p>
+        <table>
+            <tr>
+                <td> Name </td>
+                <td> <%= @i.name %> </td>
+            </tr>
+            <tr> 
+                <td> Standard Unit </td>
+                <td> <%= @u.name %> </td>
+            </tr>
+            <tr> 
+                <td> Category </td>
+                <td> <%= @cat.name %> </td> 
+            </tr>
+            <tr> 
+                <td> Allergies </td>
+                <td> <% @als.each do |a| %>
+                         <%= a.name%><% unless a==@als.last %>, <% end %> 
+                     <% end %> </td>
+            </tr>
+        </table>
+    </p>
+
+    <% unless @convs.blank? %> 
+        <p> 
+            <table>
+                <% @convs.each do |c| %>
+                    <tr> 
+                        <td> 1 <%= Unit.find(c.unit1).name %> </td>
+                        <td> = </td> 
+                        <td> <%= c.factor %> <%= Unit.find(c.unit2).name %> </td>
+                        <td> <%= link_to "Edit", edit_conversion_url(:id=>c.id) %> </td>
+                        <td> <%= link_to "x", destroy_conversion_url(:id=>c.id), :confirm => "Are you sure?" %> </td>
+                    </tr>
+                <% end %>
+            </table>
+        </p>
+    <% end %> 
+    
+    <fieldset> 
+        <legend>
+            Actions
+        </legend>
+
+        <%= link_to "Edit", edit_ingredient_path %> |
+        <%= link_to "Conversion", new_conversion_url(:id=> @i.id) %> 
+
+    </fieldset>
+
+    <p>
+        <%= button_to "Destroy", @i, :confirm => "Are you sure?", :method => :delete %> 
+    </p>
+
+</fieldset>

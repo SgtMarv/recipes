@@ -1,0 +1,23 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        <%= @title %>
+    </legend>
+
+    <%= form_tag create_conversion_url(:id => @i.id) do %> 
+        <p>
+            1 
+            <%= select_tag "u1", options_from_collection_for_select(@us, :id, :name) %> 
+            = 
+            <%= text_field_tag "factor", @f, :size => 3 %>
+            <%= select_tag "u2", options_from_collection_for_select(@us, :id, :name) %> 
+        </p>
+
+        <p>
+            <%= button_to "#{@action}", create_conversion_url(:id=> @i.id) %>
+        </p>
+    <% end %>
+
+</fieldset>
+

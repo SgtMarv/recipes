@@ -1,0 +1,17 @@
+\section*{<%= @m.name%>}
+For <%=@m.people%> people
+
+\begin{multicols*}{2}
+<% @ings.each_with_index do |ing,i| %> 
+    <% if (i == 0 || ing[5] != @ings[i-1][5]) %> 
+        \subsection*{<%= lesc ing[5]%>}
+            \begin{itemize} 
+    <% end %> 
+    
+    \item <%= "%g" % ("%.2f" % ing[2])%> <%= lesc ing[4] %> <%= lesc ing[1] %> 
+
+    <% if (ing == @ings.last || ing[5] != @ings[i+1][5]) %> 
+        \end{itemize}
+    <% end %> 
+<% end %> 
+\end{multicols*}

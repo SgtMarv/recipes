@@ -1,0 +1,41 @@
+<%= form_tag check_recipe_path do %> 
+  
+    <p>
+        <table>
+            <tr>
+                <td> Name </td>
+                <td> <%= text_field_tag "name" %> </td>
+            </tr>
+            <tr> 
+                <td> Image </td>
+                <td> <%= file_field_tag "image" %> </td>
+            </tr>
+            <tr> 
+                <td> Comment </td> 
+                <td> <%= text_area_tag "comment" %> </td>
+            </td>
+        </table>
+    </p>
+
+    <p>
+        <table>
+            <tr>
+                <th> Ingredient </th>
+                <th> Amount </th>
+                <th> Unit </th>
+            </tr> 
+            <% 10.times do |i| %> 
+                <tr>
+                    <td> <%= text_field_tag "ingredient[]", nil, :size => 9%> </td>
+                    <td> <%= number_field_tag "amount[]", nil, :size => 4, :step => :any %> </td>
+                    <td> <%= text_field_tag "unit[]", nil, :size => 1 %> </td>
+                </tr>
+            <% end %>
+        </table>
+    </p>
+
+    <p>
+        <%= button_to  "#{@action}", check_recipe_path %> 
+    </p>
+
+<% end %>     

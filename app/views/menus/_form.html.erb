@@ -1,0 +1,35 @@
+<%= form_for @m do |m| %>  
+    <p>
+        <table>
+            <tr>
+                <td> Name </td>
+                <td> <%= m.text_field "name", :value=> @m.name %> 
+            </tr>
+
+            <tr>
+                <td> People </td>
+                <td> <%= m.number_field "people", :value => @m.people %> </td>
+            </tr>
+        </table>
+    </p>
+
+    <% if @action == "Update" %> 
+        <p>
+            <table>
+                <% @mrs.each do |mr| %> 
+                    <tr> 
+                        <td> <%= number_field_tag "factor[]", mr.factor, :step=> :any %>  </td>
+                        <td> <%= Recipe.find(mr.recipe).name %> </td>
+                             <%= hidden_field_tag "recipe[]", mr.id %> 
+                        <td> <%= link_to "X", remove_recipe_url(:id => @m.id, :mr => mr.id) %> </td>
+                    </tr>
+                <% end %> 
+            </table>
+        </p>
+    <% end %> 
+
+    <p>
+        <%= m.submit "#{@action}" %> 
+    </p>
+
+<% end %> 

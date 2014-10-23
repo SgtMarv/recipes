@@ -1,0 +1,52 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        <%= @title %> 
+    </legend>
+
+    <h3> 
+        <%= @r.name %> 
+    </h3>
+
+    <p> 
+        <table>
+            <tr>
+                <th> Amount </th>
+                <th> Unit </th>
+                <th> Ingredient </th>
+            </tr>
+            <% @ings.each do |i| %> 
+                <tr>
+                    <td> <%= i.amount %> </td>
+                    <td> <%= Unit.find(i.unit).name %> </td>
+                    <td> <%= Ingredient.find(i.ingredient).name %> </td>
+                </tr>
+            <% end %> 
+        </table>
+    </p>
+
+    <p>
+        <% @allergies.each do |a| %> 
+            <%=Allergy.find(a.allergy).name%><% unless a == @allergies.last%>, <%end%>
+        <% end %>
+    </p>
+    <p>
+        <%= @r.comment %> 
+    </p> 
+
+    <fieldset>
+        <legend>
+            Actions
+        </legend>
+        <%= link_to "Edit", edit_recipe_path %> |
+        <%= link_to "Add", add_ingredient_url(:id => @r.id) %> 
+
+    </fieldset>
+
+
+    <p>
+        <%= button_to "Destroy", @r, :confirm => "Are you sure?", :method => :delete %> 
+    </p>
+
+</fieldset>

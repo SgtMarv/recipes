@@ -1,0 +1,21 @@
+<% unless (flash[:notice].blank? && flash[:error].blank?) %>
+
+<fieldset>
+    <legend>
+        Info
+    </legend>
+    <% unless flash[:notice].blank? %>
+        <p>
+            <%= flash[:notice] %> 
+        </p>
+    <% end %> 
+    <% unless flash[:error].blank? %>
+        <p style="color:red">
+            <%= flash[:error] %> 
+        </p>
+    <% end %> 
+
+
+</fieldset>
+
+<% end %> 

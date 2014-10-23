@@ -1,0 +1,11 @@
+<fieldset>
+    <legend> 
+        <%= @title %> 
+    </legend>
+
+    <%= link_to "New", new_category_path %>  |
+    <%= link_to "List", categories_path %> 
+
+</fieldset>
+
+<%= render 'layouts/flash_view' %> 

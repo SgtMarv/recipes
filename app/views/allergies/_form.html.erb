@@ -1,0 +1,16 @@
+<%= form_for @a do |a| %> 
+    <p> 
+        <table>
+            <tr> 
+                <td> Allergy </td>
+                <td> <%= a.text_field :name, :value=>  @a.name%> </td>
+            </tr>
+
+        </table>
+    </p>
+
+    <p>
+        <%= a.submit "#{@action}" %>
+    </p> 
+
+<% end %> 

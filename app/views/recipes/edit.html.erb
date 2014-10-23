@@ -1,0 +1,36 @@
+<%= render 'header' %> 
+
+<fieldset> 
+    <legend>
+        <%= @title %> 
+    </legend>
+
+    <%= form_for @r do |r| %> 
+        <p>
+            <%= r.text_field :name, :value => @r.name %> 
+        </p>
+        <p>
+            <table>
+                <% @ings.each do |ing| %> 
+                    <tr> 
+                        <td> <%= number_field_tag "amount[]", ing.amount, :step => :any  %> </td>
+                        <td> <%= select_tag "unit[]", options_from_collection_for_select(@units, :id, :name, ing.unit) %> </td> 
+                        <td> <%= Ingredient.find(ing.ingredient).name %> </td>
+                        <td> <%= link_to "X", remove_ingredient_url(:id => ing.id), :confirm => "Are you sure?"  %> </td> 
+                        <%= hidden_field_tag "ingredient[]", ing.id%> 
+                    </tr>
+                <% end %> 
+            </table>
+        </p>
+
+        <p>
+            <%= r.text_area :comment %> 
+        </p>
+
+    <p>
+        <%= r.submit "#{@action}" %> 
+    </p>
+
+    <% end %> 
+
+</fieldset>

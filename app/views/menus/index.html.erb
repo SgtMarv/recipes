@@ -1,0 +1,23 @@
+<%= render 'header'%> 
+
+<fieldset>
+    <legend>
+        <%= @title %> 
+    </legend>
+
+    <p>
+        <table>
+            <tr>
+                <th> Date </th>
+                <th> Menu </th>
+            </tr>
+            <% @menus.each do |m| %> 
+                <tr>
+                    <td> <%= m.created.strftime("%d.%m.%Y") %> </p>
+                    <td> <%= link_to "#{m.name}", m %> </p>
+                </tr>
+            <% end %> 
+        </table>
+    </p>
+
+</fieldset>

@@ -1,0 +1,23 @@
+<%= render 'header' %> 
+
+<fieldset>
+    <legend>
+        <%= @title %>
+    </legend>
+
+    <%= form_tag update_conversion_url(:id => @c.id) do %> 
+        <p>
+            1 
+            <%= Unit.find(@c.unit1).name %> 
+            = 
+            <%= text_field_tag "factor", @c.factor, :size => 3 %>
+            <%= Unit.find(@c.unit2).name %> 
+        </p>
+
+        <p>
+            <%= button_to "#{@action}", update_conversion_url(:id=> @c.id) %>
+        </p>
+    <% end %>
+
+</fieldset>
+

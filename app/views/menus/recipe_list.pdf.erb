@@ -1,0 +1,21 @@
+\section*{<%=@m.name %>}
+    For <%= @m.people%> people.
+        \vspace{2cm}
+
+<% @mrs.each do |mr| %> 
+    <% @r = Recipe.find(mr.recipe)%> 
+    \subsection*{<%=@r.name%>}
+    \vspace{-0.5cm}
+    \hrulefill
+        \begin{itemize}
+            <% @ri = RecipeIngredient.where("recipe = ?", @r.id) %> 
+            <% @ri.each do |ri| %>
+                <% @i = Ingredient.find(ri.ingredient) %> 
+                <% @u = Unit.find(ri.unit) %>
+                \item <%=@m.people*mr.factor*ri.amount %> <%= @u.name %> <%= @i.name%>
+            <% end %>
+        \end{itemize}
+
+        <%= @r.comment %> 
+        \vspace{3cm}
+<% end %> 

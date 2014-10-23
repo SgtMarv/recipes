@@ -1,0 +1,1 @@
+var search_data = {"index":{"searchIndex":["recipes","application"],"longSearchIndex":["recipes","recipes::application"],"info":[["Recipes","","Recipes.html","",""],["Recipes::Application","","Recipes/Application.html","",""]]}}
