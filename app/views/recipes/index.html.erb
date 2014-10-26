@@ -8,10 +8,15 @@
     <p>
         <table>
             <tr> 
+                <th> </th>
                 <th> Recipe </th>
             </tr>
             <% @recipes.each do |r| %> 
                 <tr>
+                    <td>
+                        <% unless r.image.blank? %> 
+                            <%= image_tag(r.image.to_s, {:style => "max-width:60px;max-height:45px"})%>
+                        <% end %> 
                     <td> <%= link_to "#{r.name}", r %> </td>
                 </tr>
             <% end %> 
