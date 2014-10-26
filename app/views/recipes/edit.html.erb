@@ -5,10 +5,11 @@
         <%= @title %> 
     </legend>
 
-    <%= form_for @r do |r| %> 
+    <%= form_for @r, :html=>{:multipart=> true} do |r| %> 
         <p>
             <%= r.text_field :name, :value => @r.name %> 
         </p>
+            <%= file_field_tag "image" %>
         <p>
             <table>
                 <% @ings.each do |ing| %> 

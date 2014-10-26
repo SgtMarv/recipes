@@ -4,7 +4,8 @@
     <legend>
         Check Recipe
     </legend>
-    
+
+    <div style="float:left;width:auto;">
     <%= form_for @recipe do |r| %> 
         <p>
             <table>
@@ -50,6 +51,7 @@
                     <td> Comment </td>
                     <td> <%= @recipe.comment %> </td>
                     <%= hidden_field_tag "comment", @recipe.comment %> 
+                    <%= hidden_field_tag "image", @recipe.image %> 
                 </tr>
             </table>
         </p>
@@ -58,5 +60,11 @@
     </p>
 
     <% end %> 
+    </div>
+
+    <div style="float:right">
+        <%= image_tag(@recipe.image.to_s, {:style => "max-width:400px;max-height:300px"})%>
+    </div>
+    
 
 </fieldset>

@@ -9,6 +9,11 @@
         <%= @r.name %> 
     </h3>
 
+    <% unless @r.image.blank? %>
+        <div>
+            <%= image_tag(@r.image.to_s, {:style => "max-width:400px;max-height:300px"})%>
+        </div>
+    <% end %> 
     <p> 
         <table>
             <tr>

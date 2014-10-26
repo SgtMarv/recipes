@@ -28,7 +28,16 @@ class RecipesController < ApplicationController
         @recipe = Recipe.new
         @recipe.name = params[:name]
         @recipe.comment = params[:comment]
-        @recipe.image = params[:image]
+        unless params[:image].nil?
+            File.open(Rails.root.join('app', 'assets', 'images', params[:image].original_filename), 'wb') do |f|
+                f.binmode
+                f.write(open(params[:image].tempfile).read)
+                f.rewind
+            end
+            @recipe.image = params[:image].original_filename
+        end
+            
+
         @ings = Array.new
         @us   = Array.new
         @vs   = Array.new
@@ -64,6 +73,7 @@ class RecipesController < ApplicationController
             end
         end
 
+
     end
 
 
@@ -71,6 +81,7 @@ class RecipesController < ApplicationController
         @r = Recipe.new
         @r.name = params[:name]
         @r.comment = params[:comment]
+        @r.image = params[:image]
         @r.save 
 
         unless params[:ingredient].blank?
@@ -164,6 +175,16 @@ class RecipesController < ApplicationController
                 @rec_a.allergy = a.id
                 @rec_a.save
             end
+        end
+
+        unless params[:image].nil?
+            File.open(Rails.root.join('app', 'assets', 'images', params[:image].original_filename), 'wb') do |f|
+                f.binmode
+                f.write(open(params[:image].tempfile).read)
+                f.rewind
+            end
+            @r.image = params[:image].original_filename
+            @r.save
         end
 
         respond_to do |f|
@@ -285,6 +306,9 @@ class RecipesController < ApplicationController
         @ings = RecipeIngredient.find_by_sql("SELECT * 
                                               FROM recipe_ingredient
                                               WHERE recipe = #{@r.id}")
+
+        File.delete(Rails.root.join('app', 'assets', 'images', @r.image)) if File.exist?(Rails.root.join('app', 'assets', 'images', @r.image))
+
         @as = RecipeAllergy.where("recipe = #{@r.id}")
         @as.each do |a|
             a.destroy
