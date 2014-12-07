@@ -146,7 +146,7 @@ class MenusController < ApplicationController
             end
         end
 
-        @ings = @ings.sort_by{|a| [a[5],a[0]] }
+        @ings = @ings.sort_by{|a| [a[5],a[1]] }
 
         respond_to do |f|
             f.pdf{render 'shopping_list'}

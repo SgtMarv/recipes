@@ -10,6 +10,7 @@ CREATE TABLE units(
 CREATE TABLE categories(
     id          serial          NOT NULL,
     name        varchar(255)    NOT NULL,
+    niceness    decimal         NOT NULL,
     PRIMARY KEY (id),
     UNIQUE (name)
 );
@@ -18,6 +19,7 @@ CREATE TABLE categories(
 CREATE TABLE ingredients(
     id          serial          NOT NULL,
     name        varchar(255)    NOT NULL,
+    comment     text,
     favored_unit int            NOT NULL,
     category    int             NOT NULL,  
     PRIMARY KEY (id),

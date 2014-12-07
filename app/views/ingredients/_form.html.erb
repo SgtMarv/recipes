@@ -17,6 +17,10 @@
                 <td> Allergies </td>
                 <td> <%= select_tag "allergies[]", options_from_collection_for_select(@als, :id, :name, @als_sel.map(&:id)), :multiple => true  %> </td>
             </tr>
+            <tr>
+                <td> Comment </td>
+                <td> <%= i.text_area :comment, :value => @i.comment %> </td>
+            </tr>
                 
 
         </table>

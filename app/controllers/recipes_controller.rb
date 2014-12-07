@@ -46,14 +46,18 @@ class RecipesController < ApplicationController
                 unless i == ""
                     @i = Ingredient.find_by_sql("SELECT *
                                                  FROM ingredients 
-                                                 WHERE name = '#{i}'").first
+                                                 WHERE name = '#{i}'
+                                                 ORDER BY name").first
                     unless @i.blank?
                         @ings << @i
                     else
                         @is = Ingredient.find_by_sql("SELECT *
-                                                      FROM ingredients ")
+                                                      FROM ingredients 
+                                                      ORDER BY name")
                                                       #WHERE name like '#{i}'")
-                        @ings << @is 
+                        @is = @is.keep_if{|x| x.name[0].downcase == i[0].downcase}
+                        @ings << [@is,i]
+
                     end
 
                     @vs << params[:amount][j]
@@ -65,9 +69,11 @@ class RecipesController < ApplicationController
                         @us << @u
                     else
                         @uus = Ingredient.find_by_sql("SELECT *
-                                                      FROM units ")
-                                                      #WHERE name like '#{i}'")
-                        @us << @uus
+                                                       FROM units 
+                                                       ORDER BY name")
+                                                       
+                                                       #WHERE name like '#{i}'")
+                        @us << [@uus, params[:unit][j]]
                     end
                 end
             end
@@ -215,9 +221,13 @@ class RecipesController < ApplicationController
                         @ings << @i
                     else
                         @is = Ingredient.find_by_sql("SELECT *
-                                                      FROM ingredients ")
+                                                      FROM ingredients 
+                                                      ORDER BY name")
                                                       #WHERE name like '#{i}'")
-                        @ings << @is 
+
+                        @is = @is.keep_if{|x| x.name[0].downcase == i[0].downcase}
+
+                        @ings << [@is,i] 
                     end
 
                     @vs << params[:amount][j]
@@ -229,9 +239,11 @@ class RecipesController < ApplicationController
                         @us << @u
                     else
                         @uus = Ingredient.find_by_sql("SELECT *
-                                                      FROM units ")
+                                                      FROM units 
+                                                      ORDER BY name")
+
                                                       #WHERE name like '#{i}'")
-                        @us << @uus
+                        @us << [@uus,params[:unit][j]]
                     end
                 end
             end
@@ -307,7 +319,9 @@ class RecipesController < ApplicationController
                                               FROM recipe_ingredient
                                               WHERE recipe = #{@r.id}")
 
-        File.delete(Rails.root.join('app', 'assets', 'images', @r.image)) if File.exist?(Rails.root.join('app', 'assets', 'images', @r.image))
+        unless @r.image.blank?
+            File.delete(Rails.root.join('app', 'assets', 'images', @r.image)) if File.exist?(Rails.root.join('app', 'assets', 'images', @r.image))
+        end
 
         @as = RecipeAllergy.where("recipe = #{@r.id}")
         @as.each do |a|

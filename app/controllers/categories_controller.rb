@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
     before_filter do 
         @title = "Categories"
-        @categories = Category.order(:name).all
+        @categories = Category.order(:niceness).all
     end
 
     def index

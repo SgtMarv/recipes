@@ -11,7 +11,7 @@
             <%= select_tag "u1", options_from_collection_for_select(@us, :id, :name) %> 
             = 
             <%= text_field_tag "factor", @f, :size => 3 %>
-            <%= select_tag "u2", options_from_collection_for_select(@us, :id, :name) %> 
+            <%= select_tag "u2", options_from_collection_for_select(@us, :id, :name,@i.favored_unit) %> 
         </p>
 
         <p>

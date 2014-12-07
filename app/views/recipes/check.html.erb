@@ -11,20 +11,23 @@
             <table>
                 <tr> 
                     <td> Name </td>
-                    <td> <%= @recipe.name %> <td>
+                    <td> <%= @recipe.name %> </td>
                     <%= hidden_field_tag "name",  @recipe.name %> 
                 </tr>
                 <% @ings.each_with_index do |i,j| %> 
                     <tr>
-
                         <td> 
                             <% unless i.class == Array %> 
                                 <%= i.name %> 
                                 <%= hidden_field_tag "ingredient[]", i.id %> 
+                            </td> <td>
                             <% else %> 
-                               <%= select_tag "ingredient[]", options_from_collection_for_select(i, :id, :name), {:include_blank=>false} %>  
+                                <%= i.last %> 
+                                </td> <td>
+                                <%= select_tag "ingredient[]", options_from_collection_for_select(i.first, :id, :name), {:include_blank=>false} %>  
                             <% end %> 
                         </td>
+
 
                         <td>
                             <% unless @vs[j] == "" %> 
@@ -40,7 +43,8 @@
                                 <%= @us[j].name %> 
                                 <%= hidden_field_tag "unit[]", @us[j].id %> 
                             <% else %> 
-                                <%= select_tag "unit[]", options_from_collection_for_select(@us[j], :id, :name) %>     
+                                <%= @us[j].last %> 
+                                <%= select_tag "unit[]", options_from_collection_for_select(@us[j].first, :id, :name) %>     
                             <% end %> 
                         </td>
 

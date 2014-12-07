@@ -17,7 +17,7 @@
                 <% 5.times do |i| %> 
                     <tr>
                         <td> <%= text_field_tag "ingredient[]", nil, :size => 9%> </td>
-                        <td> <%= number_field_tag "amount[]", nil, :size => 4 %> </td>
+                        <td> <%= number_field_tag "amount[]", nil, :size => 4,:step=>:any %> </td>
                         <td> <%= text_field_tag "unit[]", nil, :size => 1 %> </td>
                     </tr>
                 <% end %>
