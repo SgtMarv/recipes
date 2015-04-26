@@ -313,6 +313,19 @@ class RecipesController < ApplicationController
     end
 
 
+    def delete_image
+        @r = Recipe.find(params[:id])
+
+        @r.update_attributes(:image => nil)
+
+        respond_to do |f|
+            f.html{redirect_to(edit_recipe_path(:id => @r.id))}
+        end
+
+
+    end
+
+
     def destroy
         @r = Recipe.find(params[:id])
         @ings = RecipeIngredient.find_by_sql("SELECT * 

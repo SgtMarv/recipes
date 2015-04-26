@@ -14,6 +14,7 @@ Recipes::Application.routes.draw do
     match '/recipes/add_ingredient/:id', :to => 'recipes#add_ingredient', :as => :add_ingredient
     match '/recipes/check_ingredient/:id', :to => 'recipes#check_ingredient', :as => :check_ingredient
     match '/recipes/insert_ingredient/:id', :to => 'recipes#insert_ingredient', :as => :insert_ingredient
+    match '/recipes/remove_image/:id', :to => 'recipes#delete_image', :as => :remove_image
     resources :recipes
     
     resources :units
