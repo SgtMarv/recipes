@@ -1,3 +1,4 @@
 tmp/*
 log/*
 app/assets/images/*
+config/database.yml
