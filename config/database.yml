@@ -51,5 +51,5 @@ production:
   encoding: unicode
   database: recipes_production
   pool: 5
-  username: recipes
+  username: max
   password:
