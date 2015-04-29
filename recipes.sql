@@ -10,7 +10,7 @@ CREATE TABLE units(
 CREATE TABLE categories(
     id          serial          NOT NULL,
     name        varchar(255)    NOT NULL,
-    niceness    decimal         NOT NULL,
+    niceness    decimal,
     PRIMARY KEY (id),
     UNIQUE (name)
 );
