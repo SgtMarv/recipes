@@ -8,6 +8,7 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'rails-latex'
 gem "paperclip", "~> 4.2"
+gem 'rake'
 
 
 # Gems used only for assets and not required
