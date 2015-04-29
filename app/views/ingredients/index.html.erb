@@ -5,16 +5,21 @@
         <%= @title %> 
     </legend>
 
-    <p>
-        <table>
-            <tr> 
-                <th> Ingredient </th>
-            </tr>
-            <% @ingredients.each do |i| %> 
-                <tr>
-                    <td> <%= link_to "#{i.name}", i %> </td>
-                </tr>
+    <p style="float:left"><table>
+        <% @ingredients.each_with_index do |ing,i| %> 
+            <% if (@ingredients.count)/4 == i %> 
+                <table>
             <% end %> 
+                <tr> 
+                    <td> 
+                        <%= link_to "#{ing.name}", ing %> 
+                    </td>
+                </tr>
+            <% if (i+1)%(@ingredients.count) == 0 %> 
+                </table>
+            <% end %> 
+        <% end %> 
+
         </table>
     </p>
 </fieldset>

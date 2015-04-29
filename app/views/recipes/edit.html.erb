@@ -9,7 +9,11 @@
         <p>
             <%= r.text_field :name, :value => @r.name %> 
         </p>
-            <%= file_field_tag "image" %>
+
+
+        <% unless @r.image.nil? %> 
+            <%= @r.image %> <%= link_to "X", remove_image_path(:id => @r.id) %>
+        <% end %> <%= file_field_tag "image" %>
         <p>
             <table>
                 <% @ings.each do |ing| %> 
