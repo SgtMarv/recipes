@@ -1,10 +1,10 @@
-\section*{<%=@m.name %>}
+\section*{<%=lesc @m.name %>}
     For <%= @m.people%> people.
         \vspace{2cm}
 
 <% @mrs.each do |mr| %> 
     <% @r = Recipe.find(mr.recipe)%> 
-    \subsection*{<%=@r.name%>}
+    \subsection*{<%=lesc @r.name%>}
     \vspace{-0.5cm}
     \hrulefill
         \begin{itemize}

@@ -122,6 +122,8 @@ COPY conversions (id, unit1, unit2, ingredient, factor) FROM stdin;
 44	10	1	82	5.0
 45	4	1	83	1.0
 46	9	1	84	15.0
+47	9	1	115	15.0
+48	5	1	120	15.0
 \.
 
 
@@ -129,7 +131,7 @@ COPY conversions (id, unit1, unit2, ingredient, factor) FROM stdin;
 -- Name: conversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('conversions_id_seq', 46, true);
+SELECT pg_catalog.setval('conversions_id_seq', 48, true);
 
 
 --
@@ -150,7 +152,6 @@ COPY ingredients (id, name, favored_unit, category, comment) FROM stdin;
 24	Champignons	1	4	\N
 25	Suppengrün	8	4	\N
 26	Mehl	1	10	\N
-27	Spargel	1	4	\N
 28	Milch	4	11	\N
 29	Eier	5	11	\N
 30	Tomaten - gehackt	1	7	\N
@@ -196,7 +197,6 @@ COPY ingredients (id, name, favored_unit, category, comment) FROM stdin;
 73	Puderzucker	1	15	\N
 75	Orangensaft	4	13	\N
 76	Apfelsaft	4	13	\N
-77	Cola	4	13	\N
 78	Eisteekonzentrat	11	13	\N
 79	Tee	12	13	\N
 40	Wasser	13	13	\N
@@ -207,7 +207,6 @@ COPY ingredients (id, name, favored_unit, category, comment) FROM stdin;
 83	Joghurt - natur	1	11	\N
 84	Seesam	1	15	\N
 87	Butter	1	11	\N
-88	Käse -aufschnitt	1	11	\N
 90	Nutella	1	7	\N
 91	Marmelade 	1	7	\N
 89	Wurst - aufschnitt 	1	6	\N
@@ -226,7 +225,27 @@ COPY ingredients (id, name, favored_unit, category, comment) FROM stdin;
 101	Gouda	1	11	
 102	Mais	1	4	
 103	Kidneybohnen	1	7	
-104	ddd	12	15	
+105	Steak	1	6	
+106	Würstchen	1	6	
+107	Feta	1	11	
+108	Zuccini	1	4	
+109	Tomaten	1	4	
+110	Maiskolben	5	4	
+111	Quark	1	11	
+77	Cola, Fanta, Sprite	4	13	
+112	Frischkäse - Aufschnitt	1	11	
+113	Weichkäse - Aufschnitt	1	11	
+114	Hafermilch	4	11	
+115	Kakao - wie Kaba	1	13	
+88	Käse - Aufschnitt	1	11	
+116	Obst	1	5	
+117	Rohkost	1	4	
+27	Spargel - Weiss	1	4	
+118	Spargel - Grün	1	4	
+119	Parmesan	1	11	
+120	Tomaten - Kirsch	1	4	
+121	Kräuter - getrocknet, italienisch	1	8	
+122	Pinienkerne	1	14	
 \.
 
 
@@ -279,10 +298,6 @@ COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
 81	26	4
 82	26	2
 83	26	3
-84	27	5
-85	27	4
-86	27	2
-87	27	3
 88	28	5
 89	28	3
 90	29	5
@@ -453,10 +468,6 @@ COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
 291	76	4
 292	76	2
 293	76	3
-294	77	5
-295	77	4
-296	77	2
-297	77	3
 298	78	5
 299	78	4
 300	78	2
@@ -502,8 +513,6 @@ COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
 350	91	3
 351	89	5
 352	89	4
-353	88	5
-354	88	3
 355	92	5
 356	92	4
 357	92	2
@@ -551,10 +560,75 @@ COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
 407	103	4
 408	103	2
 409	103	3
-410	104	5
-411	104	4
-412	104	2
-413	104	3
+414	105	5
+415	105	4
+416	106	5
+417	106	4
+418	107	5
+419	107	3
+420	108	5
+421	108	4
+422	108	2
+423	108	3
+424	109	5
+425	109	4
+426	109	2
+427	109	3
+428	110	5
+429	110	4
+430	110	2
+431	110	3
+432	111	5
+433	111	3
+434	77	5
+435	77	4
+436	77	2
+437	77	3
+440	112	5
+441	112	3
+442	113	5
+443	113	3
+444	114	5
+445	114	4
+446	114	2
+447	114	3
+448	115	5
+449	115	4
+450	115	2
+451	115	3
+452	88	5
+453	88	3
+454	116	5
+455	116	4
+456	116	2
+457	116	3
+458	117	5
+459	117	4
+460	117	2
+461	117	3
+462	27	5
+463	27	4
+464	27	2
+465	27	3
+466	118	5
+467	118	4
+468	118	2
+469	118	3
+470	119	5
+471	119	4
+472	119	3
+477	120	5
+478	120	4
+479	120	2
+480	120	3
+481	121	5
+482	121	4
+483	121	2
+484	121	3
+485	122	5
+486	122	4
+487	122	2
+488	122	3
 \.
 
 
@@ -562,14 +636,14 @@ COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
 -- Name: ingredient_allergy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('ingredient_allergy_id_seq', 413, true);
+SELECT pg_catalog.setval('ingredient_allergy_id_seq', 488, true);
 
 
 --
 -- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('ingredients_id_seq', 104, true);
+SELECT pg_catalog.setval('ingredients_id_seq', 122, true);
 
 
 --
@@ -578,8 +652,7 @@ SELECT pg_catalog.setval('ingredients_id_seq', 104, true);
 
 COPY menues (id, name, created, people) FROM stdin;
 5	FSWE WS1415	2014-11-25 19:05:19	28
-6	Fontainebleau	2015-04-26 20:46:44	14
-8	Bla	2015-04-29 13:52:39	2
+10	FSWE SS2015	2015-05-04 18:58:06	30
 \.
 
 
@@ -596,7 +669,6 @@ COPY recipes (id, name, image, comment) FROM stdin;
 40	Apfelstrudel		
 41	FSWE Getränke		
 42	Naan		\\begin{itemize}\r\n\\item Milch, ein fünftel Zucker und Hefe verrühren und ca. 20 min stehen lassen.\r\n\\item Mehl, Salz und Backpulver vermischen\r\n\\item Ei und Jughurt jeweils leicht schlagen\r\n\\item Alles verrühren und dann ca. 1-2 Stunde gehen lassen. \r\n\\item Teig ca. 1 cm dick ausrollen und seesam drauf streuen\r\n\\item Backofen möglist heiß vorheizen\r\n\\item ca. 10 min Backen, zwischendurch wenden und fertig backen bis oberseite braun\r\n\\end{itemize}\r\nDannach ggf. mit Butter oder Butterschmalz bepinseln
-43	FSWE Frühstück		
 35	Erbsen-Pilz-Curry		Pilze in Scheiben schneiden.\r\nChili, Koriander, Knoblauch, Ingwer und Kurkuma mit 2 Esslöffel Wasser im Mixer zu einer glatten Paste verarbeiten und beiseite stellen.\r\nEin Drittel der Erbsen mit 2 Esslöffeln Wasser im Mixer pürieren und auch beiseite stellen.\r\nDas Öl erhitzen und das Cumin (1/4 TL pro Person) 10 Sekunden anrösten, die Pfanne dabei rütteln. Die Pilze 1 Minute im Würzöl braten und wieder herausnehmen. Die Gewürzpaste in die Pfanne geben und 2-3 Minuten rühren. Die restlichen Erbsen, das Erbsenpüree, die Pilze, das Salz, die Sojasahne und 2 Esslöffel Wasser zufügen. Alles behutsam vermischen und bei mittlerer Hitze zugedeckt 3-4 Minuten kochen lassen.\r\n
 44	Mandelmilch		\r\nDie Mandeln überbrühen, 10 min ziehen lassen und die Haut abziehen.\r\nEtwa 400 ml Wasser (oder auch alles, wenn es in den Mixer passt) in den Mixer geben und anstellen. Die Mandeln zugeben und gut pürieren. Die Flüssigkeit durch ein Küchentuch gießen und dieses gut ausdrücken.\r\nMit Vanille-Zucker abschmecken.
 45	Mandelsahne		\r\nDie Mandeln überbrühen und die Haut abziehen. Aus den Zitronen Saft machen.\r\nAlle Zutaten zusammen in einen Mixer geben und glatt pürieren.\r\n
@@ -605,12 +677,9 @@ COPY recipes (id, name, image, comment) FROM stdin;
 46	FSWE Frühstück Vegan		
 47	FSWE Fleisch		
 30	Gorgonzolasauce	\N	\\begin{itemize}\r\n\\item Speck in einem Topf anbraten. \r\n\\item Sahne dazugeben und zum köcheln bringen. \r\n\\item Knoblauch fein gehackt dazugeben und Gorgonzola etwas kleingewürftelt in der Sahne schmelzen. \r\n\\item Würzen und etwas einkochen lassen.\r\n\\end{itemize}
-48	Bleau - Getränke		
-49	Tomatensauce		
-50	Käse-Sahne-Sauce		
-51	Gemüsereis		
-52	Foo		\\item Bar\r\n$\\Rightarrow$ bla
-53	Bar		
+43	FSWE Frühstück		\\begin{itemize}\r\n\\item Rühreier\r\n\\item Hartgekochte Eier\r\n\\item Pfannkuchen\r\n\\item Obst schneiden\r\n\\item Rohkost gemischt\r\n\\end{itemize}\r\n
+58	FSWE Obst & Rohkost		
+59	Zweierlei Spargel		
 \.
 
 
@@ -635,13 +704,14 @@ COPY menue_recipe (id, menue, recipe, factor) FROM stdin;
 35	5	46	0.2
 36	5	45	1.0
 37	5	47	0.4
-38	6	48	3.0
-39	6	34	1.0
-40	6	50	0.5
-41	6	49	0.5
-42	6	51	1.0
-44	8	52	1.0
-45	8	53	1.0
+50	10	41	3.0
+52	10	46	0.2
+51	10	43	3.0
+53	10	58	3.0
+54	10	34	1.8
+55	10	30	0.36
+56	10	31	1.08
+57	10	33	0.36
 \.
 
 
@@ -649,14 +719,14 @@ COPY menue_recipe (id, menue, recipe, factor) FROM stdin;
 -- Name: menue_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('menue_recipe_id_seq', 45, true);
+SELECT pg_catalog.setval('menue_recipe_id_seq', 57, true);
 
 
 --
 -- Name: menues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('menues_id_seq', 9, true);
+SELECT pg_catalog.setval('menues_id_seq', 10, true);
 
 
 --
@@ -664,11 +734,7 @@ SELECT pg_catalog.setval('menues_id_seq', 9, true);
 --
 
 COPY recipe_allergy (id, recipe, allergy) FROM stdin;
-245	46	5
-246	46	4
-247	46	2
 62	32	3
-248	46	3
 163	36	5
 164	36	4
 165	36	2
@@ -679,18 +745,8 @@ COPY recipe_allergy (id, recipe, allergy) FROM stdin;
 256	33	3
 257	30	5
 258	30	3
-259	41	5
-260	41	3
 261	47	5
 262	47	4
-273	48	5
-274	48	3
-275	49	5
-276	49	4
-277	49	2
-278	49	3
-279	50	5
-280	50	3
 195	37	4
 196	37	2
 197	37	3
@@ -699,23 +755,11 @@ COPY recipe_allergy (id, recipe, allergy) FROM stdin;
 200	39	2
 201	39	3
 202	40	3
-281	51	5
-282	51	4
-283	51	2
-284	51	3
 210	42	3
 211	35	5
 212	35	4
 213	35	2
 214	35	3
-289	52	5
-290	52	4
-291	52	2
-292	52	3
-293	53	5
-294	53	4
-295	53	2
-296	53	3
 219	44	5
 220	44	4
 221	44	2
@@ -727,10 +771,22 @@ COPY recipe_allergy (id, recipe, allergy) FROM stdin;
 156	34	4
 157	34	2
 158	34	3
-241	31	5
-242	31	4
-243	31	2
-244	31	3
+309	46	5
+310	46	4
+311	46	2
+312	46	3
+319	58	5
+320	58	4
+321	58	2
+322	58	3
+327	59	4
+328	59	3
+329	41	5
+330	41	3
+335	31	5
+336	31	4
+337	31	2
+338	31	3
 \.
 
 
@@ -738,7 +794,7 @@ COPY recipe_allergy (id, recipe, allergy) FROM stdin;
 -- Name: recipe_allergy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('recipe_allergy_id_seq', 296, true);
+SELECT pg_catalog.setval('recipe_allergy_id_seq', 338, true);
 
 
 --
@@ -819,13 +875,11 @@ COPY recipe_ingredient (id, ingredient, recipe, unit, amount) FROM stdin;
 104	72	40	4	10.0
 105	73	40	1	10.0
 112	79	41	12	2.0
-113	28	41	4	500.0
-106	74	41	13	1.0
+145	95	41	13	0.15
 151	17	47	1	50.0
 108	75	41	13	0.4
 109	76	41	13	0.2
 110	77	41	13	0.4
-114	80	41	1	27.0
 115	26	42	1	85.0
 116	28	42	4	25.0
 117	63	42	9	0.4
@@ -836,15 +890,6 @@ COPY recipe_ingredient (id, ingredient, recipe, unit, amount) FROM stdin;
 122	29	42	5	0.15
 123	19	42	7	1.0
 124	84	42	9	0.2
-125	85	43	5	2.0
-126	86	43	1	50.0
-127	87	43	1	25.0
-129	89	43	1	30.0
-130	90	43	1	20.0
-131	91	43	1	20.0
-132	92	43	1	10.0
-133	93	43	1	45.0
-134	94	43	1	180.0
 135	29	43	5	1.0
 136	40	44	4	500.0
 137	41	44	1	100.0
@@ -855,41 +900,48 @@ COPY recipe_ingredient (id, ingredient, recipe, unit, amount) FROM stdin;
 142	19	45	7	1.0
 143	44	45	11	0.25
 144	63	45	1	10.0
-145	95	41	13	0.5
 152	98	47	1	75.0
 147	58	31	4	25.0
-128	88	43	1	75.0
-148	97	46	1	20.0
-149	67	46	1	25.0
+148	97	46	1	5.0
 150	96	46	1	50.0
-153	74	48	13	1.0
 58	43	33	5	0.03
 111	78	41	13	0.2
-154	77	48	13	0.5
-155	75	48	13	0.5
-157	79	48	12	1.0
-177	14	52	6	5.0
-156	80	48	1	12.0
-158	28	48	13	0.3
-159	30	49	1	200.0
-160	33	49	1	30.0
-161	21	49	5	0.3
-162	42	49	4	5.0
-163	14	49	6	0.3
-164	100	49	1	50.0
-165	56	49	1	50.0
-166	15	50	4	120.0
-167	16	50	1	50.0
-168	101	50	1	50.0
-169	14	50	6	0.5
-170	13	51	1	80.0
-171	100	51	1	100.0
-172	102	51	1	50.0
-173	103	51	1	80.0
-174	33	51	1	50.0
-175	14	51	6	0.3
-176	21	51	5	0.5
-179	14	53	5	10.0
+113	28	41	4	150.0
+114	80	41	1	20.0
+125	85	43	5	1.5
+126	86	43	1	35.0
+127	87	43	1	15.0
+129	89	43	1	10.0
+130	90	43	1	15.0
+131	91	43	1	15.0
+132	92	43	1	5.0
+133	93	43	1	30.0
+134	94	43	1	100.0
+128	88	43	1	20.0
+149	67	46	1	15.0
+106	74	41	13	0.5
+198	113	43	1	10.0
+199	112	43	1	5.0
+200	114	46	4	200.0
+201	115	41	9	1.0
+202	116	58	1	250.0
+203	117	58	1	50.0
+204	27	59	1	200.0
+205	118	59	1	200.0
+206	55	59	1	250.0
+207	119	59	1	12.0
+208	19	59	7	1.0
+209	87	59	1	10.0
+210	39	59	7	2.0
+211	63	59	10	0.2
+212	120	59	5	3.0
+213	14	59	6	0.25
+214	121	59	5	0.2
+215	21	59	1	2.0
+216	31	59	9	3.0
+217	122	59	1	5.0
+218	39	31	7	1.0
+219	19	31	7	1.0
 \.
 
 
@@ -897,22 +949,22 @@ COPY recipe_ingredient (id, ingredient, recipe, unit, amount) FROM stdin;
 -- Name: recipe_ingredient_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('recipe_ingredient_id_seq', 179, true);
+SELECT pg_catalog.setval('recipe_ingredient_id_seq', 219, true);
 
 
 --
 -- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
 --
 
-SELECT pg_catalog.setval('recipes_id_seq', 53, true);
+SELECT pg_catalog.setval('recipes_id_seq', 59, true);
 
 
 --
 -- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: max
 --
 
---COPY schema_migrations (version) FROM stdin;
---\.
+COPY schema_migrations (version) FROM stdin;
+\.
 
 
 --
