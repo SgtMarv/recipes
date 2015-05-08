@@ -12,7 +12,7 @@ SET client_min_messages = warning;
 SET search_path = public, pg_catalog;
 
 --
--- Data for Name: allergies; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: allergies; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY allergies (id, name) FROM stdin;
@@ -24,14 +24,14 @@ COPY allergies (id, name) FROM stdin;
 
 
 --
--- Name: allergies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: allergies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('allergies_id_seq', 5, true);
 
 
 --
--- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY categories (id, name, niceness) FROM stdin;
@@ -52,14 +52,14 @@ COPY categories (id, name, niceness) FROM stdin;
 
 
 --
--- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('categories_id_seq', 17, true);
 
 
 --
--- Data for Name: units; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: units; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY units (id, name) FROM stdin;
@@ -79,7 +79,7 @@ COPY units (id, name) FROM stdin;
 
 
 --
--- Data for Name: conversions; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: conversions; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY conversions (id, unit1, unit2, ingredient, factor) FROM stdin;
@@ -128,14 +128,14 @@ COPY conversions (id, unit1, unit2, ingredient, factor) FROM stdin;
 
 
 --
--- Name: conversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: conversions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('conversions_id_seq', 48, true);
 
 
 --
--- Data for Name: ingredients; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: ingredients; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY ingredients (id, name, favored_unit, category, comment) FROM stdin;
@@ -250,7 +250,7 @@ COPY ingredients (id, name, favored_unit, category, comment) FROM stdin;
 
 
 --
--- Data for Name: ingredient_allergy; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: ingredient_allergy; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
@@ -633,21 +633,21 @@ COPY ingredient_allergy (id, ingredient, allergy) FROM stdin;
 
 
 --
--- Name: ingredient_allergy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: ingredient_allergy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('ingredient_allergy_id_seq', 488, true);
 
 
 --
--- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('ingredients_id_seq', 122, true);
 
 
 --
--- Data for Name: menues; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: menues; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY menues (id, name, created, people) FROM stdin;
@@ -657,7 +657,7 @@ COPY menues (id, name, created, people) FROM stdin;
 
 
 --
--- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: recipes; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY recipes (id, name, image, comment) FROM stdin;
@@ -684,7 +684,7 @@ COPY recipes (id, name, image, comment) FROM stdin;
 
 
 --
--- Data for Name: menue_recipe; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: menue_recipe; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY menue_recipe (id, menue, recipe, factor) FROM stdin;
@@ -716,21 +716,21 @@ COPY menue_recipe (id, menue, recipe, factor) FROM stdin;
 
 
 --
--- Name: menue_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: menue_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('menue_recipe_id_seq', 57, true);
 
 
 --
--- Name: menues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: menues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('menues_id_seq', 10, true);
 
 
 --
--- Data for Name: recipe_allergy; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: recipe_allergy; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY recipe_allergy (id, recipe, allergy) FROM stdin;
@@ -791,14 +791,14 @@ COPY recipe_allergy (id, recipe, allergy) FROM stdin;
 
 
 --
--- Name: recipe_allergy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: recipe_allergy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('recipe_allergy_id_seq', 338, true);
 
 
 --
--- Data for Name: recipe_ingredient; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: recipe_ingredient; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY recipe_ingredient (id, ingredient, recipe, unit, amount) FROM stdin;
@@ -946,21 +946,21 @@ COPY recipe_ingredient (id, ingredient, recipe, unit, amount) FROM stdin;
 
 
 --
--- Name: recipe_ingredient_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: recipe_ingredient_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('recipe_ingredient_id_seq', 219, true);
 
 
 --
--- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: recipes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('recipes_id_seq', 59, true);
 
 
 --
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: max
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: www-data
 --
 
 COPY schema_migrations (version) FROM stdin;
@@ -968,7 +968,7 @@ COPY schema_migrations (version) FROM stdin;
 
 
 --
--- Name: units_id_seq; Type: SEQUENCE SET; Schema: public; Owner: max
+-- Name: units_id_seq; Type: SEQUENCE SET; Schema: public; Owner: www-data
 --
 
 SELECT pg_catalog.setval('units_id_seq', 14, true);
