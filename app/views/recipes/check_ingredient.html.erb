@@ -44,7 +44,7 @@
                                 <%= hidden_field_tag "unit[]", @us[j].id %> 
                             <% else %> 
                                 <%= @us[j].last %> 
-                                <%= select_tag "unit[]", options_from_collection_for_select(@us[j].last, :id, :name) %>     
+                                <%= select_tag "unit[]", options_from_collection_for_select(@us[j].first, :id, :name) %>     
                             <% end %> 
                         </td>
 
