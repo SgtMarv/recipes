@@ -1,0 +1,22 @@
+<% @cats.each_with_index do |cat,i| %> 
+    <fieldset>
+        <legend>
+            <%= cat.name %> 
+        </legend>
+
+        <p>
+            <table>
+                <tr> 
+                    <% @ingredients[i].each_with_index do |ing,j| %> 
+                        <td style="width:6cm;"> <%= link_to "#{ing.name}", ing %> </td>
+                        <% if (j+1)%5 == 0  %> 
+                            </tr>
+                            <tr>
+                        <% end %> 
+                    <% end %> 
+                </tr>
+            </table>
+        </p>
+                
+    </fieldset>
+<% end %> 

@@ -5,21 +5,10 @@
         <%= @title %> 
     </legend>
 
-    <p style="float:left"><table>
-        <% @ingredients.each_with_index do |ing,i| %> 
-            <% if (@ingredients.count)/4 == i %> 
-                <table>
-            <% end %> 
-                <tr> 
-                    <td> 
-                        <%= link_to "#{ing.name}", ing %> 
-                    </td>
-                </tr>
-            <% if (i+1)%(@ingredients.count) == 0 %> 
-                </table>
-            <% end %> 
-        <% end %> 
-
-        </table>
-    </p>
+    <% if @view == "categories" %> 
+        <%= render 'categories' %> 
+    <% end %> 
+    <% if @view == "alphabet" %> 
+        <%= render 'alphabet' %> 
+    <% end %> 
 </fieldset>

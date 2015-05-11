@@ -1,0 +1,14 @@
+<p style="float:left">
+    <table>
+        <tr>
+        <% @ingredients.each_with_index do |ing,i| %> 
+            <td style="width:25%;padding:10px 50px"> <%= link_to "#{ing.name}", ing %> </td>
+            <% if (i+1)%4==0  %> 
+                </tr>
+                <tr>
+            <% end %> 
+        <% end %> 
+        </tr>
+
+    </table>
+</p>
