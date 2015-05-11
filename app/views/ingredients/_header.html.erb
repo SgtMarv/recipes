@@ -4,7 +4,8 @@
     </legend>
 
     <%= link_to "New", new_ingredient_path %>  |
-    <%= link_to "List", ingredients_path %> 
+    <%= link_to "List", ingredients_path(:view => "alphabet") %> |
+    <%= link_to "Categories", ingredients_path(:view => "categories") %> 
 
 </fieldset>
 

@@ -6,6 +6,23 @@ class IngredientsController < ApplicationController
     end
 
     def index
+        if params[:view] == "alphabet"
+            @view = "alphabet"
+            @ingredients = Ingredient.order(:name).all
+            unless params[:letter].blank?
+                @ingredients.keep_if{|ing| ing.name[0].downcase == params[:letter].downcase}
+            end
+
+        else
+            @view = "categories"
+            @cats = Category.order(:niceness).all
+            @ingredients = Array.new
+            @cats.each do |cat|
+                ings = Ingredient.where("category = ?", cat.id).order(:name)
+                @ingredients << ings
+            end
+
+        end
 
     end
 
