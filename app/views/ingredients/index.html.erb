@@ -1,5 +1,14 @@
 <%= render 'header' %> 
 
+
+<% if @view == "alphabet" %> 
+    <fieldset style="margin-top:7px;padding-top:10px">
+    <% ("A".."Z").each do |a| %> 
+        <%= link_to "#{a}", ingredients_path(:view => "alphabet", :letter => a) %> 
+    <% end %> 
+    </fieldset>
+<% end %> 
+
 <fieldset>
     <legend> 
         <%= @title %> 

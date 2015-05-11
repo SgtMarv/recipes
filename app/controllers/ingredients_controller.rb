@@ -8,7 +8,10 @@ class IngredientsController < ApplicationController
     def index
         if params[:view] == "alphabet"
             @view = "alphabet"
-            @ingredients == Ingredient.order(:name).all
+            @ingredients = Ingredient.order(:name).all
+            unless params[:letter].blank?
+                @ingredients.keep_if{|ing| ing.name[0].downcase == params[:letter].downcase}
+            end
 
         else
             @view = "categories"

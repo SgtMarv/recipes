@@ -2,7 +2,7 @@
     <table>
         <tr>
         <% @ingredients.each_with_index do |ing,i| %> 
-            <td style="width:25%;padding:10px 50px"> <%= link_to "#{ing.name}", ing %> </td>
+            <td style="width:25%;padding:0px 50px 0px 10px"> <%= link_to "#{ing.name}", ing %> </td>
             <% if (i+1)%4==0  %> 
                 </tr>
                 <tr>
