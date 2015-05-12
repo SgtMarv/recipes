@@ -62,9 +62,11 @@ class RecipesController < ApplicationController
 
                     @vs << params[:amount][j]
 
-                    @u = Unit.find_by_sql("SELECT *
-                                           FROM units
-                                           WHERE name = '#{params[:unit][j]}'").first
+                    #@u = Unit.find_by_sql("SELECT *
+                    #                       FROM units
+                    #                       WHERE name = '#{params[:unit][j]}'").first
+                    @u = Unit.all
+                    @u = @u.keep_if{|unit| unit.name.downcase == params[:unit][j].downcase}.first
                     unless @u.blank?
                         @us << @u
                     else
@@ -232,9 +234,8 @@ class RecipesController < ApplicationController
 
                     @vs << params[:amount][j]
 
-                    @u = Unit.find_by_sql("SELECT *
-                                           FROM units
-                                           WHERE name = '#{params[:unit][j]}'").first
+                    @u = Unit.all
+                    @u = @u.keep_if{|unit| unit.name.downcase == params[:unit][j].downcase}.first
                     unless @u.blank?
                         @us << @u
                     else
