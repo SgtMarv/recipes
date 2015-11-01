@@ -11,6 +11,7 @@ class MenusController < ApplicationController
     def show
         @m = Menu.find(params[:id])
         @mrs = MenuRecipe.where("menue = #{@m.id}")
+        @mrs.sort_by!{|m| Recipe.find(m.recipe).name }
     end
 
     def new
